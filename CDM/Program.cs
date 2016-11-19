@@ -17,8 +17,8 @@ namespace CDM
         {
             EFTasksRepository ef = new EFTasksRepository();
             
-
-            ef.DeleteTaskById(55);
+            TaskData task1 = new TaskData { TaskId = 61, TaskText = "baby2" };
+            ef.DeleteTaskById(57);
         }
     }
 }

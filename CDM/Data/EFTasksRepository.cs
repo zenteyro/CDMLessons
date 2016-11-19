@@ -24,11 +24,11 @@ namespace CDM
 
         public bool DeleteTaskById(int id)
         {
-            TaskData taskData = this.TaskDatas.FirstOrDefault(p => p.TaskId == id);
+            TaskData taskData = TaskDatas.Find(id);
             if (taskData != null)
             {
-                TaskData result = this.TaskDatas.Remove(taskData);
-                this.SaveChanges();
+                TaskData result = TaskDatas.Remove(taskData);
+                SaveChanges();
                 return true;
             }
             return false;
@@ -41,30 +41,28 @@ namespace CDM
                 {
                     foreach (TaskData task in tasks)
                     {
-                    //    TaskData task = this.TaskDatas.Remove(task);
-                    //    if (this.TaskDatas.Remove(task) == null) throw new Exception();
+                        TaskData item = TaskDatas.Find(task.TaskId);
+                        TaskDatas.Remove(item);
                     }
-                    
-                    transaction.Commit();
-                    this.SaveChanges();
-                    return true;
                 }
                 catch
                 {
                     transaction.Rollback();
                     return false;
                 }
+
+                transaction.Commit();
+                SaveChanges();
+                return true;
             }            
         }
-
         public List<TaskData> GetAllTasks()
         {
-            throw new NotImplementedException();
+            return TaskDatas.ToList();
         }
-
         public TaskData GetTaskById(int id)
         {
-            throw new NotImplementedException();
+            return TaskDatas.Find(id);
         }
 
         public TaskData GetTasksByUser(TaskUser user)
@@ -74,7 +72,16 @@ namespace CDM
 
         public bool UpsertTask(TaskData task)
         {
-            throw new NotImplementedException();
+            TaskData taskData = TaskDatas.Find(task.TaskId);
+            if (taskData == null)
+                TaskDatas.Add(task);
+            else
+            {
+                Entry(taskData).State = EntityState.Modified;
+                taskData.TaskText = task.TaskText;
+            }
+            SaveChanges();
+            return true;
         }
     }
 }
