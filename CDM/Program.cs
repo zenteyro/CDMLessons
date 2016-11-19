@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using MicroLite.Configuration;
+using MicroLite.Builder;
+using MicroLite;
 
 namespace CDM
 {
@@ -12,20 +15,10 @@ namespace CDM
     {
         static void Main(string[] args)
         {
-            string tasks = ConfigurationManager.ConnectionStrings["CDMTask"].ConnectionString;
-            // string connection = "Data Source=DESKTOP-E57JEEP;Initial Catalog=userdb;Integrated Security=True";
+            EFTasksRepository ef = new EFTasksRepository();
+            
 
-            List<TaskData> listTaskData = new List<TaskData> { };
-            TaskData td1 = new TaskData { TaskId = 8, TaskText = "E" };
-            TaskData td2 = new TaskData { TaskId = 9, TaskText = "F" };
-            TaskData td3 = new TaskData { TaskId = 10, TaskText = "G" };
-            TaskData td4 = new TaskData { TaskId = 11, TaskText = "H" };
-
-
-            listTaskData.AddRange(new List<TaskData> { td1, td2, td3, td4 });
-            AdoNetTasksRepository obj = new AdoNetTasksRepository();
-            Console.WriteLine(obj.DeleteTasks(listTaskData).ToString());
-
+            ef.DeleteTaskById(55);
         }
     }
 }

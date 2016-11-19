@@ -33,3 +33,7 @@ E:\Projects\CDM\CDM\CDM\bin\Debug\xunit.core.pdb
 E:\Projects\CDM\CDM\CDM\bin\Debug\xunit.core.xml
 E:\Projects\CDM\CDM\CDM\bin\Debug\xunit.execution.desktop.pdb
 E:\Projects\CDM\CDM\CDM\bin\Debug\xunit.execution.desktop.xml
+E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.dll
+E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.xml
+E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.SqlServer.xml
