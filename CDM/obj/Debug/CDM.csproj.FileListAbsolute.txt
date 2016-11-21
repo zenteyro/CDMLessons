@@ -37,3 +37,9 @@ E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.dll
 E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.SqlServer.dll
 E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.xml
 E:\Projects\CDM\CDM\CDM\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Bson.dll
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Driver.Core.dll
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Driver.dll
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Bson.xml
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Driver.xml
+E:\Projects\CDM\CDM\CDM\bin\Debug\MongoDB.Driver.Core.xml
