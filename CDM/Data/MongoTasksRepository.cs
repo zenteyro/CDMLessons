@@ -18,65 +18,45 @@ namespace CDM
 
         public bool DeleteTaskById(int id)
         {
-            var result = collection.DeleteOne(Builders<TaskData>.Filter.Eq("TaskId", id));
+            var result = collection.DeleteOne(t => t.TaskId == id);
             if (result.DeletedCount == 0)
                 return false;
             else
                 return true;
 
         }
-
-        
         public bool DeleteTasks(List<TaskData> tasks)
         {
             try
             {
                 foreach (var task in tasks)
-                    collection.Find(Builders<TaskData>.Filter.Eq("TaskId", task.TaskId)).Single();
+                    collection.Find(t=>t.TaskId == task.TaskId).Single();
             }
             catch
             {
                 return false;
             }
             foreach (var task in tasks)
-                collection.DeleteOne(Builders<TaskData>.Filter.Eq("TaskId", task.TaskId));
+                collection.DeleteOne(t => t.TaskId == task.TaskId);
             return true;
             
         }
-
-
-
         public List<TaskData> GetAllTasks()
         {
             return collection.Find(new BsonDocument()).ToList();
         }
         public TaskData GetTaskById(int id)
         {
-            return collection.Find(Builders<TaskData>.Filter.Eq("TaskId", id)).Single();
+            return collection.Find<TaskData>(t => t.TaskId == id).Single();
         }
-
 
         public TaskData GetTasksByUser(TaskUser user)
         {
             throw new NotImplementedException();
         }
-
-
         public bool UpsertTask(TaskData task)
         {
-            try
-            {
-                collection.Find(Builders<TaskData>.Filter.Eq("TaskId", task.TaskId)).Single();
-
-                var filter = Builders<TaskData>.Filter.Eq("TaskId", task.TaskId);
-                var update = Builders<TaskData>.Update.Set("TaskText", task.TaskText);
-
-                collection.UpdateOne(filter, update);
-            }
-            catch
-            {
-                collection.InsertOne(task);
-            }
+            collection.ReplaceOne(t => t.TaskId == task.TaskId, task, new UpdateOptions { IsUpsert = true });
             return true;
         }
     }

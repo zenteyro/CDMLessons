@@ -17,14 +17,7 @@ namespace CDM
     {
         static void Main(string[] args)
         {
-            MongoTasksRepository mt = new MongoTasksRepository();
-            TaskData task1 = new TaskData { TaskId = 4, TaskText = "a" };
-            TaskData task2 = new TaskData { TaskId = 4, TaskText = "b" };
-            TaskData task3 = new TaskData { TaskId = 4, TaskText = "c" };
-            TaskData task4 = new TaskData { TaskId = 4, TaskText = "d" };
 
-
-            Console.WriteLine(mt.DeleteTasks(new List<TaskData> { task1, task2, task3, task4}).ToString());
         }
     }
 }
