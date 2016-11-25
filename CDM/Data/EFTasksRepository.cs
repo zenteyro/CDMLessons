@@ -19,7 +19,11 @@ namespace CDM
             modelBuilder.Entity<TaskData>().Property(p => p.TaskText).HasColumnName("TaskText");
             base.OnModelCreating(modelBuilder);
         }
-        
+        protected override void Dispose(bool disposing)
+        {
+            Dispose();
+            base.Dispose(disposing);
+        }
 
 
         public bool DeleteTaskById(int id)

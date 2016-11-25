@@ -48,7 +48,7 @@ namespace CDM
         {
             using (var session = sessionfactory.OpenSession())
             {
-                return (List<TaskData>) session.Fetch<TaskData>(new SqlQuery("SELECT * FROM Tasks"));
+                return (List<TaskData>) session.Fetch<TaskData>(SqlBuilder.Select("*").From("Tasks").ToSqlQuery());
             }
         }
         public TaskData GetTaskById(int id)
